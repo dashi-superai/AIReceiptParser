@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Parser</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Receipt Parser</a>
+            <div class="ms-auto">
+                <button class="btn btn-outline-light me-2 fw-bold" id="addReceiptBtn">
+                    <i class="bi bi-plus-circle me-1"></i> Add Receipt
+                </button>
+                <button class="btn btn-warning fw-bold" id="changeApiKeyBtn">
+                    <i class="bi bi-key me-1"></i> Change API Key
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <!-- Receipts Table -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="receiptsTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Store</th>
+                        <th scope="col">Total (€)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Receipts dynamically loaded -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination -->
+        <nav>
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination links dynamically added -->
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Add Receipt Modal -->
+    <div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload Receipt</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label for="fileInput" class="form-label">Select Receipt Image</label>
+                            <input type="file" class="form-control" id="fileInput" accept="image/*" required>
+                        </div>
+                        <div id="uploadMessage" class="mt-3"></div>
+                        <button type="submit" class="btn btn-primary w-100">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Modal -->
+    <div class="modal fade" id="apiKeyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change API Key</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="password" class="form-control" id="apiKeyInput" placeholder="Enter API Key" required>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="saveApiKeyBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Details Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Receipt Details</h5>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price (€)</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailsTableBody">
+                            <!-- Details dynamically loaded -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
